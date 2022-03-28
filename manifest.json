@@ -1,0 +1,25 @@
+{
+  "name": "Bookmark Plugin",
+  "description": "This extension is for bookmarking websites where chrome's built in bookmark feature is inconveniet",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": [{
+    "service_worker": "background-bundle.js"
+  }],
+  "action": {
+    "default_popup": "templates/html/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "onPageLoad-bundle.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ]
+}
