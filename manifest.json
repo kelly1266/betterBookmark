@@ -13,6 +13,7 @@
     "service_worker": "background-bundle.js"
   }],
   "action": {
+    "default_icon":"icons/icon.png",
     "default_popup": "templates/html/popup.html"
   },
   "content_scripts": [

@@ -79,10 +79,11 @@ Use this space to show useful examples of how a project can be used. Additional 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Delete Bookmark functionality
+- [x] Delete Bookmark functionality
 - [ ] Update CSS
 - [ ] Feature to ignore specific urls that match patern
 - [ ] Feature to set bookmarks as active/inactive
+- [ ] Feature that adds the old LastURL to the ignore list after a new one is set
 
 See the [open issues](https://github.com/kelly1266/betterBookmark/issues) for a full list of proposed features (and known issues).
 

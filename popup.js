@@ -16,6 +16,12 @@ function populateExistingBookmarks(){
     });
 }
 
+function generateID(){
+    const head = Date.now().toString();
+    const tail = Math.random().toString().substr(2);
+    return head + tail;
+}
+
 // populate page with existing bookmarks
 populateExistingBookmarks();
 // add the listener events
@@ -40,11 +46,27 @@ window.addEventListener("load", function(event) {
                 url: "templates/html/settings.html",
                 focused: true,
             }
-            let settingFormBookmarkID = element.getAttribute("data-bookmarkid")
+            let settingFormBookmarkID = element.getAttribute("data-bookmarkid");
             chrome.storage.local.set({"settingFormBookmarkID":settingFormBookmarkID});
             // create window and get the promise result
             chrome.windows.create(options);
             window.close();
         });
+    });
+
+    // add click listener to create a new bookmark
+    let addNewBookmarkElement = document.getElementById("newBookmarkRow");
+    addNewBookmarkElement.addEventListener('click', function(event){
+        event.preventDefault();
+        const options = {
+            type: "popup",
+            url: "templates/html/settings.html",
+            focused: true,
+        }
+        let settingFormBookmarkID = generateID();
+        chrome.storage.local.set({"settingFormBookmarkID":settingFormBookmarkID});
+        // create window and get the promise result
+        chrome.windows.create(options);
+        window.close();
     });
 });
