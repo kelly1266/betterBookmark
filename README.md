@@ -82,6 +82,7 @@ Use this space to show useful examples of how a project can be used. Additional 
 - [ ] Delete Bookmark functionality
 - [ ] Update CSS
 - [ ] Feature to ignore specific urls that match patern
+- [ ] Feature to set bookmarks as active/inactive
 
 See the [open issues](https://github.com/kelly1266/betterBookmark/issues) for a full list of proposed features (and known issues).
 

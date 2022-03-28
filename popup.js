@@ -3,9 +3,13 @@ function populateExistingBookmarks(){
     chrome.storage.local.get("configObject", (data)=>{
         data.configObject.Bookmarks.forEach(function(item, index){
             existingBookmarks.innerHTML += `
-                <div>
-                    <button class="bookmark-clickable" data-url="${item.LastURL}">${item.Title}</button>
-                    <button class="settings" data-bookmarkid="${item.BookmarkID}">Settings</button>
+                <div class="bookmarkCard">
+                    <div class="bookmarkTitle bookmark-clickable" data-url="${item.LastURL}">
+                        <a>${item.Title}</a>
+                    </div>
+                    <div class="settingsWheel">
+                        <img src="../../icons/settingswheel20.png" class="settings" data-bookmarkid="${item.BookmarkID}"/>
+                    </div>
                 </div>
             `;
         });
