@@ -12,9 +12,10 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-
+  <a href="https://github.com/kelly1266/betterBookmark">
+    <img src="icons/icon128.png" alt="Logo" width="128" height="128">
+  </a>
   <h3 align="center">Better Bookmark Chrome Extension</h3>
-    ·
     <a href="https://github.com/kelly1266/betterBookmark/issues">Report Bug</a>
     ·
     <a href="https://github.com/kelly1266/betterBookmark/issues">Request Feature</a>
