@@ -1,17 +1,26 @@
 function populateExistingBookmarks(){
-    const existingBookmarks = document.getElementById("existingBookmarks");
-    chrome.storage.local.get("configObject", (data)=>{
-        data.configObject.Bookmarks.forEach(function(item, index){
-            existingBookmarks.innerHTML += `
-                <div class="bookmarkCard">
-                    <div class="bookmarkTitle bookmark-clickable" data-url="${item.LastURL}">
-                        <a>${item.Title}</a>
+    return new Promise((resolve, reject) => {
+        const existingBookmarks = document.getElementById("existingBookmarks");
+        chrome.storage.local.get("configObject", (data)=>{
+            data.configObject.Bookmarks.forEach(function(item, index){
+                existingBookmarks.innerHTML += `
+                    <div class="bookmarkCard">
+                        <div class="bookmarkTitle bookmark-clickable" data-url="${item.LastURL}">
+                            <a>${item.Title}</a>
+                        </div>
+                        <div class="settingsWheel">
+                            <img src="../../icons/settingswheel20.png" class="settings" data-bookmarkid="${item.BookmarkID}"/>
+                        </div>
                     </div>
-                    <div class="settingsWheel">
-                        <img src="../../icons/settingswheel20.png" class="settings" data-bookmarkid="${item.BookmarkID}"/>
-                    </div>
-                </div>
-            `;
+                `;
+                console.log("Bookmark added");
+            });
+            const error = false;
+            if(!error){
+                resolve();
+            }else{
+                reject("Someone fucked up");
+            }
         });
     });
 }
@@ -22,10 +31,11 @@ function generateID(){
     return head + tail;
 }
 
-// populate page with existing bookmarks
-populateExistingBookmarks();
-// add the listener events
-window.addEventListener("load", function(event) {
+async function init(){
+    // populate page with existing bookmarks
+    await populateExistingBookmarks();
+    // add the listener events
+    console.log("attempting to get bookmark rows");
     // add click listeners for redirection the page
     let elements = document.getElementsByClassName("bookmark-clickable");
     Array.from(elements).forEach(function(element) {
@@ -34,6 +44,7 @@ window.addEventListener("load", function(event) {
             let location = this.getAttribute("data-url");
             chrome.tabs.create({active: false, url: location});
         });
+        console.log("redirect listener added")
     });
 
     // add click listeners for opening settings popup
@@ -52,6 +63,7 @@ window.addEventListener("load", function(event) {
             chrome.windows.create(options);
             window.close();
         });
+        console.log("Settings listener");
     });
 
     // add click listener to create a new bookmark
@@ -69,4 +81,7 @@ window.addEventListener("load", function(event) {
         chrome.windows.create(options);
         window.close();
     });
-});
+
+}
+
+init();
