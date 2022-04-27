@@ -13,7 +13,6 @@ function populateExistingBookmarks(){
                         </div>
                     </div>
                 `;
-                console.log("Bookmark added");
             });
             const error = false;
             if(!error){
@@ -34,8 +33,7 @@ function generateID(){
 async function init(){
     // populate page with existing bookmarks
     await populateExistingBookmarks();
-    // add the listener events
-    console.log("attempting to get bookmark rows");
+
     // add click listeners for redirection the page
     let elements = document.getElementsByClassName("bookmark-clickable");
     Array.from(elements).forEach(function(element) {
@@ -44,7 +42,6 @@ async function init(){
             let location = this.getAttribute("data-url");
             chrome.tabs.create({active: false, url: location});
         });
-        console.log("redirect listener added")
     });
 
     // add click listeners for opening settings popup
@@ -63,7 +60,6 @@ async function init(){
             chrome.windows.create(options);
             window.close();
         });
-        console.log("Settings listener");
     });
 
     // add click listener to create a new bookmark
