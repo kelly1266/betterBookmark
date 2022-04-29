@@ -56,6 +56,12 @@ function createForm(bookmark){
             window.close();
         });
     });
+
+    document.getElementById("cancelChanges").addEventListener("click", function(event){
+        event.preventDefault();
+        window.close();
+    });
+    
 }
 
 window.addEventListener("load", function(event) {

@@ -11,16 +11,22 @@
       <h2>Bookmark ID: <a id="bookmarkID">${bookmark.BookmarkID}</a></h2>
       <form id="formID" action="#">
           <label for="bookmarkTitle">Title:</label><br>
-          <input type="text" id="bookmarkTitle" value="${bookmark.Title}"><br><br>
+          <input type="text" id="bookmarkTitle" value="${bookmark.Title}" required><br><br>
           <label for="bookmarkLastURL">Last Visited URL:</label><br>
           <input type="text" id="bookmarkLastURL" value="${bookmark.LastURL}" disabled="true"><br><br>
           <label for="bookmarkPattern">Pattern:</label><br>
-          <input type="text" id="bookmarkPattern" value="${bookmark.Pattern}"><br><br>
-          <input type="checkbox" id="bookmarkIsPattern" name="bookmarkIsPattern">
-          <label for="bookmarkIsPattern">Pattern or Prefix?</label>
+          <input type="text" id="bookmarkPattern" value="${bookmark.Pattern}" required><br><br>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="bookmarkIsPattern" name="bookmarkIsPattern">
+            <label class="form-check-label" for="bookmarkIsPattern">Is this RegEx?</label>
+          </div>
           <!-- Table for adding items to the ignore list -->
           <div>
-            
+
+            <table id="ignoreListTable">
+
+            </table>
+            <label for="ignoreListTable">Ignore List</label>
           </div>
 
           <div class="form-check form-switch">
@@ -31,7 +37,7 @@
           <!-- Buttons at the bottom of the screen -->
           <br><br><br>
           <button id="deleteBookmark" type="button" class="btn btn-danger">Delete Bookmark</button>
-          <button type="button" class="btn btn-warning">Cancel</button>
+          <button id="cancelChanges" type="button" class="btn btn-warning">Cancel</button>
           <input type="submit" value="Apply Changes" class="btn btn-success">
       </form>
 

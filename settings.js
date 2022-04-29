@@ -23,6 +23,7 @@ function createForm(bookmark){
             let configObject = data.configObject;
             const bookmarkID = document.getElementById("bookmarkID").innerHTML;
             let bookmarkExists = false;
+            // TODO: this should be a while list for performance 
             for (let i=0; i<configObject.Bookmarks.length; i++){
                 if (configObject.Bookmarks[i].BookmarkID == bookmarkID){
                     configObject.Bookmarks[i].Title = document.getElementById("bookmarkTitle").value;
@@ -55,6 +56,12 @@ function createForm(bookmark){
             window.close();
         });
     });
+
+    document.getElementById("cancelChanges").addEventListener("click", function(event){
+        event.preventDefault();
+        window.close();
+    });
+    
 }
 
 window.addEventListener("load", function(event) {
