@@ -12,23 +12,11 @@ function getBookmark(BookmarkID, bookmarks){
 }
 
 function createForm(bookmark){
-    document.getElementById("formDiv").innerHTML = `
-    <h2>Bookmark ID: <a id="bookmarkID">${bookmark.BookmarkID}</a></h2>
-    <form id="formID" action="#">
-        <label for="bookmarkTitle">Title:</label><br>
-        <input type="text" id="bookmarkTitle" value="${bookmark.Title}"><br><br>
-        <label for="bookmarkLastURL">Last Visited URL:</label><br>
-        <input type="text" id="bookmarkLastURL" value="${bookmark.LastURL}" disabled="true"><br><br>
-        <label for="bookmarkPattern">Pattern:</label><br>
-        <input type="text" id="bookmarkPattern" value="${bookmark.Pattern}"><br><br>
-        <input type="checkbox" id="bookmarkIsPattern" name="bookmarkIsPattern" ${bookmark.isPattern ? "checked": ""}>
-        <label for="bookmarkIsPattern">Pattern or Prefix?</label><br><br><br>
-        <button id="deleteBookmark">Delete Bookmark</button>
-        <button>Cancel Changes</button>
-        <input type="submit" value="Apply Changes">
-    </form>
-    
-    `;
+    document.getElementById("bookmarkID").innerHTML = bookmark.BookmarkID;
+    document.getElementById("bookmarkTitle").value = bookmark.Title;
+    document.getElementById("bookmarkLastURL").value = bookmark.LastURL;
+    document.getElementById("bookmarkPattern").value = bookmark.Pattern;
+    document.getElementById("bookmarkIsPattern").checked = bookmark.isPattern;
     document.getElementById("formID").addEventListener("submit", function(event){
         event.preventDefault();
         console.log("Submitting Form...")
