@@ -78,6 +78,20 @@ async function init(){
         window.close();
     });
 
+    // add click listener to open user settings page
+    let userProfileElement = document.getElementById("user");
+    userProfileElement.addEventListener('click', function(event){
+        event.preventDefault();
+        const options = {
+            type: "popup",
+            url: "templates/html/user-configs.html",
+            focused: true,
+        }
+        // create window and get the promise result
+        chrome.windows.create(options);
+        window.close();
+    });
+
 }
 
 init();

@@ -20,3 +20,17 @@
 .bookmarkCard:hover {
   background-color: yellow;
 }
+
+.headerCard {
+  display: grid;
+}
+
+.headerTitle {
+  grid-column:1;
+}
+
+.userProfile {
+  grid-column:2;
+  display: flex; 
+  justify-content: flex-end;
+}
