@@ -7,18 +7,19 @@
   </head>
   <body>
     <h1>User Profile Settings</h1>
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" role="switch" id="storageType" name="storageType">
-      <label class="form-check-label" for="storageType">Use Local or Synced storage?</label>
-    </div>
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" role="switch" id="debugMode" name="debugMode">
-      <label class="form-check-label" for="debugMode">Turn on Debug Mode</label>
-    </div>
-    <!-- Add button to Reset config object -->
-    
-    <button id="cancel" type="button" class="btn btn-warning">Cancel</button>
-    <input type="submit" value="Save" class="btn btn-success">
+    <form id="formID" action="#">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="storageType" name="storageType">
+        <label class="form-check-label" for="storageType">Use Local or Synced storage?</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="debugMode" name="debugMode">
+        <label class="form-check-label" for="debugMode">Turn on Debug Mode</label>
+      </div>
+      <!-- Add button to Reset config object -->
+      <button id="cancel" type="button" class="btn btn-warning">Cancel</button>
+      <input type="submit" value="Save" class="btn btn-success">
+    </form>
   </body>
   <script src="../../user-configs.js"></script>
 </html>

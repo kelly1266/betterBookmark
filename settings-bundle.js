@@ -17,6 +17,8 @@ function createForm(bookmark){
     document.getElementById("bookmarkLastURL").value = bookmark.LastURL;
     document.getElementById("bookmarkPattern").value = bookmark.Pattern;
     document.getElementById("bookmarkIsPattern").checked = bookmark.isPattern;
+    document.getElementById("addToIgnoreListAfterView").checked = bookmark.addToIgnoreListAfterView;
+    document.getElementById("isBookmarkActive").checked = bookmark.isBookmarkActive;
     document.getElementById("formID").addEventListener("submit", function(event){
         event.preventDefault();
         console.log("Submitting Form...")
@@ -24,11 +26,14 @@ function createForm(bookmark){
             let configObject = data.configObject;
             const bookmarkID = document.getElementById("bookmarkID").innerHTML;
             let bookmarkExists = false;
+            // TODO: this should be a while list for performance 
             for (let i=0; i<configObject.Bookmarks.length; i++){
                 if (configObject.Bookmarks[i].BookmarkID == bookmarkID){
                     configObject.Bookmarks[i].Title = document.getElementById("bookmarkTitle").value;
                     configObject.Bookmarks[i].Pattern = document.getElementById("bookmarkPattern").value;
                     configObject.Bookmarks[i].isPattern = document.getElementById("bookmarkIsPattern").checked;
+                    configObject.Bookmarks[i].addToIgnoreListAfterView = document.getElementById("addToIgnoreListAfterView").checked;
+                    configObject.Bookmarks[i].isBookmarkActive = document.getElementById("isBookmarkActive").checked;
                     bookmarkExists = true;
                 }
             }
@@ -38,6 +43,8 @@ function createForm(bookmark){
                 newBookmark.Title = document.getElementById("bookmarkTitle").value;
                 newBookmark.Pattern = document.getElementById("bookmarkPattern").value;
                 newBookmark.isPattern = document.getElementById("bookmarkIsPattern").checked;
+                newBookmark.addToIgnoreListAfterView = document.getElementById("addToIgnoreListAfterView").checked;
+                newBookmark.isBookmarkActive = document.getElementById("isBookmarkActive").checked;
                 configObject.Bookmarks.push(newBookmark);
 
             }
@@ -83,7 +90,8 @@ module.exports={
     "BookmarkID": "",
     "Pattern": "",
     "isPattern": true,
-    "BookmarkActive": true,
+    "addToIgnoreListAfterView":false,
+    "isBookmarkActive": true,
     "IgnoreList":[]
 }
 },{}]},{},[1]);

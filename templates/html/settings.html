@@ -16,24 +16,34 @@
           <input type="text" id="bookmarkLastURL" value="${bookmark.LastURL}" disabled="true"><br><br>
           <label for="bookmarkPattern">Pattern:</label><br>
           <input type="text" id="bookmarkPattern" value="${bookmark.Pattern}" required><br><br>
+          
+          <!-- Switch to toggle if the pattern is regex or a prefix -->
           <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" role="switch" id="bookmarkIsPattern" name="bookmarkIsPattern">
             <label class="form-check-label" for="bookmarkIsPattern">Is this RegEx?</label>
           </div>
+
           <!-- Table for adding items to the ignore list -->
           <div>
 
             <table id="ignoreListTable">
-
+            
             </table>
             <label for="ignoreListTable">Ignore List</label>
           </div>
 
+          <!-- Switch to toggle whether URLs that match pattern get added -->
+          <!-- to the ignore list after viewing -->
           <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" role="switch" id="addToIgnoreListAfterView" name="addToIgnoreListAfterView">
             <label class="form-check-label" for="addToIgnoreListAfterView">Add the URL to the ignore list after viewing?</label>
           </div>
           
+          <!-- Switch to toggle bookmark on/off -->
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="isBookmarkActive" name="isBookmarkActive">
+            <label class="form-check-label" for="isBookmarkActive">Bookmark active?</label>
+          </div>
           <!-- Buttons at the bottom of the screen -->
           <br><br><br>
           <button id="deleteBookmark" type="button" class="btn btn-danger">Delete Bookmark</button>

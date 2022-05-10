@@ -1,1 +1,6 @@
-{"settingFormBookmarkID":"","Bookmarks":[]}
+{
+    "settingFormBookmarkID":"",
+    "syncAccrossDevices": false,
+    "debugMode":false,
+    "Bookmarks":[]
+}

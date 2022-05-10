@@ -7,7 +7,7 @@ window.addEventListener("load", function(){
         // cycle through bookmarks and check for match
         let hasChanges = false;
         configObject.Bookmarks.forEach(function(item, index){
-            if( objectManagement.matchesPattern(item, url) ){
+            if( objectManagement.matchesPattern(item, url) && configObject.Bookmarks[index].isBookmarkActive ){
                 configObject.Bookmarks[index].LastURL = url;
                 hasChanges = true;
             }

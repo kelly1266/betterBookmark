@@ -4,6 +4,7 @@
     "BookmarkID": "",
     "Pattern": "",
     "isPattern": true,
-    "BookmarkActive": true,
+    "addToIgnoreListAfterView":false,
+    "isBookmarkActive": true,
     "IgnoreList":[]
 }
