@@ -82,8 +82,8 @@ Use this space to show useful examples of how a project can be used. Additional 
 - [x] Delete Bookmark functionality
 - [ ] Update CSS
 - [ ] Feature to ignore specific urls that match pattern
-- [ ] Feature to set bookmarks as active/inactive
-- [ ] Feature that adds the old LastURL to the ignore list after a new one is set
+- [x] Feature to set bookmarks as active/inactive
+- [x] Feature that adds the old LastURL to the ignore list after a new one is set
 - [ ] Sync accross devices option
 - [ ] Reorder bookmarks in popup
 - [ ] Add tooltips/regex guide/links in extention

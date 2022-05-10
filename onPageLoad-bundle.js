@@ -39,6 +39,17 @@ module.exports = {
 }
 
 },{"./templates/json/bookmark.json":3}],2:[function(require,module,exports){
+function urlInIgnoreList(bookmark, url){
+    let ignore = false;
+    for(i=0; i<bookmark.IgnoreList.length; i++){
+        if (bookmark.IgnoreList[i] === url){
+            ignore = true;
+        }
+    }
+    return ignore;
+}
+
+
 window.addEventListener("load", function(){
     chrome.storage.local.get("configObject", (data)=>{
         const objectManagement = require("./objectManagement.js")
@@ -48,9 +59,15 @@ window.addEventListener("load", function(){
         // cycle through bookmarks and check for match
         let hasChanges = false;
         configObject.Bookmarks.forEach(function(item, index){
-            if( objectManagement.matchesPattern(item, url) && configObject.Bookmarks[index].isBookmarkActive ){
+            const canUpdateBookmark = objectManagement.matchesPattern(item, url) 
+                                && configObject.Bookmarks[index].isBookmarkActive
+                                && ! urlInIgnoreList(configObject.Bookmarks[index], url);
+            if( canUpdateBookmark ){
                 configObject.Bookmarks[index].LastURL = url;
                 hasChanges = true;
+                if(configObject.Bookmarks[index].addToIgnoreListAfterView ){
+                    configObject.Bookmarks[index].IgnoreList.push(url)
+                }
             }
         });
         // if any matches were found, update the config object
