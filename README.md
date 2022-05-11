@@ -87,6 +87,8 @@ Use this space to show useful examples of how a project can be used. Additional 
 - [ ] Sync accross devices option
 - [ ] Reorder bookmarks in popup
 - [ ] Add tooltips/regex guide/links in extention
+- [ ] Button to turn off the extension
+- [x] Delete bookmark confirmation
 
 See the [open issues](https://github.com/kelly1266/betterBookmark/issues) for a full list of proposed features (and known issues).
 

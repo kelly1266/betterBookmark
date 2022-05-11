@@ -54,13 +54,16 @@ function createForm(bookmark){
 
     document.getElementById("deleteBookmark").addEventListener("click", function(event){
         event.preventDefault();
-        chrome.storage.local.get("configObject", (data)=>{
-            let configObject = data.configObject;
-            const bookmarkID = document.getElementById("bookmarkID").innerHTML;
-            configObject.Bookmarks = configObject.Bookmarks.filter(bookmarkObj => bookmarkObj.BookmarkID !== bookmarkID);
-            chrome.storage.local.set({"configObject":configObject});
-            window.close();
-        });
+        if(confirm("Are you sure you want to delete this bookmark?")){
+            chrome.storage.local.get("configObject", (data)=>{
+                let configObject = data.configObject;
+                const bookmarkID = document.getElementById("bookmarkID").innerHTML;
+                configObject.Bookmarks = configObject.Bookmarks.filter(bookmarkObj => bookmarkObj.BookmarkID !== bookmarkID);
+                chrome.storage.local.set({"configObject":configObject});
+                window.close();
+            });
+        }
+        
     });
 
     document.getElementById("cancelChanges").addEventListener("click", function(event){
