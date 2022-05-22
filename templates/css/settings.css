@@ -1,0 +1,14 @@
+.tableContainerDiv {
+    overflow: auto;
+    max-height: 200px;
+    border: 1px solid;
+ }
+
+ .tableButtons {
+    float:right;
+ }
+
+
+ .ignorelistLabel {
+    float:left;
+ }
