@@ -73,13 +73,35 @@ function createForm(bookmark){
     
 }
 
+function fillInTable(bookmark){
+    let ignoreItemIndex = 0;
+    const minimumNumRows = 5;
+    let ignoreListTable = document.getElementById("ignoreListTable");
+    while (ignoreItemIndex < bookmark.IgnoreList.length || ignoreItemIndex < minimumNumRows){
+        if (ignoreItemIndex < bookmark.IgnoreList.length){
+            ignoreListTable.innerHTML += `
+            <tr>
+                <td contenteditable="true">Some URL ${bookmark.IgnoreList[ignoreItemIndex]}</td>
+            </tr>
+            `;
+        }else{
+            ignoreListTable.innerHTML += `
+            <tr>
+                <td>Some URL ${ignoreItemIndex}</td>
+            </tr>
+            `;
+        }
+        ignoreItemIndex++;
+    }
+}
+
 window.addEventListener("load", function(event) {
     chrome.storage.local.get("configObject", (data)=>{
         bookmarksObject = data.configObject.Bookmarks;
         chrome.storage.local.get("settingFormBookmarkID", (settings) =>{
             let bookmark = getBookmark(settings.settingFormBookmarkID, bookmarksObject);
             createForm(bookmark);
-
+            fillInTable(bookmark);
         });
     });
       
